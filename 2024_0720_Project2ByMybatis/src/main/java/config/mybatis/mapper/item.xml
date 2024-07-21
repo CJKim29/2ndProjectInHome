@@ -28,27 +28,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select * from item_search
 	<trim prefix="where" prefixOverrides="and | or">
 		<!-- 무기 검색 -->
-		<if test="category1 != null">
-			category = #{category1}
-		</if>
-		
-		<!-- 등급 검색 -->
-		<if test="grade != null">
-			and grade = #{grade}
-		</if>
-		
-		<!-- 방어구 검색 -->
-		<if test="category2 != null">
-			or category = #{category2}
-		</if>
-		
-		<!-- 등급 검색 -->
-		<if test="grade != null">
-			and grade = #{grade}
-		</if>
-	</trim>
-	order by idx
-	</select>
+      <if test="category1 != null and category1 != 'all'">
+         category = #{category1}
+      </if>
+      
+      <!-- 방어구 검색 -->
+      <if test="category2 != null and category2 != 'all'">
+         and category = #{category2}
+      </if>
+      
+      <!-- 등급 검색 -->
+      <if test="grade != null and grade != 'all'">
+         and grade = #{grade}
+      </if>
+   </trim>
+   order by idx
+</select>
 	
 		<!-- 검색조건별 조회 -->
 		<select id="item_list_search" parameterType="Map" resultType="vo.ItemVo">
