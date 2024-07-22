@@ -116,12 +116,26 @@
 			$("#search_text").focus();
 			return;
 		}
-		
+		/* 
 		//자바스크립트 이용해서 호출
 		location.href="item/list_search.do?&search_text=" + 
 										  //자바스크립트 인코딩방식
 										  encodeURIComponent(search_text, "utf-8");
-		
+		 */
+		 
+		$.ajax({
+			  url		:	"item/list_search.do",  // ITemListConditionAction  
+			  data		:	{							
+				  				"search_text":search_text
+				  			},   
+			  success	:	function(res_data){
+				  
+				  $("#disp").html(res_data);
+			  },
+			  error		:	function(err){
+				  alert(err.responseText);
+			  }
+		  }); 
 	}//end:find()
 
 </script>
