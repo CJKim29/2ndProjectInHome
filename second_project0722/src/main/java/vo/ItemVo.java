@@ -21,6 +21,7 @@ public class ItemVo {
 	String	option7;
 	String	option8;
 	String	option9;
+	String	option10;
 	
 	public int getIdx() {
 		return idx;
@@ -135,5 +136,11 @@ public class ItemVo {
 	}
 	public void setOption9(String option9) {
 		this.option9 = option9;
+	}
+	public String getOption10() {
+		return option10;
+	}
+	public void setOption10(String option10) {
+		this.option10 = option10;
 	}
 }
