@@ -11,11 +11,13 @@
 	<typeAliases>
 		<typeAlias type="vo.ItemVo" alias="item"/>
 		<typeAlias type="vo.TransactionVo" alias="transaction"/>
+		<typeAlias type="vo.RegItemVo" alias="regitem" />
 	</typeAliases>
 	
 	
 	<mappers>
 		<mapper resource="config/mybatis/mapper/item.xml" />
 		<mapper resource="config/mybatis/mapper/transaction.xml" />
+		<mapper resource="config/mybatis/mapper/regitem.xml" />
 	</mappers>
 </configuration>

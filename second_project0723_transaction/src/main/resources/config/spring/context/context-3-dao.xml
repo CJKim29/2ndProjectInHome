@@ -12,4 +12,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="sqlSession" ref="sqlSession"/>
 	</bean>
 	
+	<bean id="regitem_dao" class="dao.RegItemDaoImpl">
+		<property name="sqlSession" ref="sqlSession"/>
+	</bean>
 </beans>
