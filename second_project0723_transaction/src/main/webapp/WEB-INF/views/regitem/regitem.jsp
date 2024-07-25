@@ -27,7 +27,11 @@
 </style>
 
 <script type="text/javascript">
-
+	
+	function buy() {
+		
+		location.href="../transaction/list.do?reg_price=${ reg_price }";
+	}
 </script>
 
 </head>
@@ -41,6 +45,7 @@
 				<th>아이템</th>
 				<th>아이템명</th>
 				<th>아이템가격</th>
+				<th>등록시간</th>
 				<th>구매여부</th>
 			</tr>
 			
@@ -53,6 +58,7 @@
 						</td>
 					<td>${ vo.reg_name }</td>
 					<td>${ vo.reg_price }</td>
+					<td>${ vo.reg_date }</td>
 					<td>
        					<input type="button" class="btn btn-success" value="구매" onclick="buy();">
 					</td>

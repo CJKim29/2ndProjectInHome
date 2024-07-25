@@ -15,7 +15,7 @@
 	);
 	
 	insert into transaction values
-	(seq_transaction_idx.nextVal, '거래', 10000, 1000)
+	(seq_transaction_idx.nextVal, '거래아이디', 10000, 1000)
 	
 	select * from transaction
 	

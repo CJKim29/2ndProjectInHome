@@ -6,7 +6,7 @@ public class RegItemVo {
 	String	filename;
 	String	reg_name;
 	int		reg_price;
-	
+	String	reg_date;
 	
 	public int getReg_idx() {
 		return reg_idx;
@@ -31,5 +31,11 @@ public class RegItemVo {
 	}
 	public void setReg_price(int reg_price) {
 		this.reg_price = reg_price;
+	}
+	public String getReg_date() {
+		return reg_date;
+	}
+	public void setReg_date(String reg_date) {
+		this.reg_date = reg_date;
 	}
 }

@@ -66,8 +66,8 @@
 	
 	<table class="table">
 			<tr class="info">
-				<th>아이디</th>
-				<th>소유포인트</th>
+				<th>고객명</th>
+				<th>계좌잔액</th>
 			</tr>
 			
 			<c:forEach var="vo" items="${ list }">
