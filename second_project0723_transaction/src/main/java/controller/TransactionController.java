@@ -10,8 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import dao.RegItemDao;
 import dao.TransactionDao;
+import vo.RegItemVo;
 import vo.TransactionVo;
 
 @Controller
@@ -20,6 +23,9 @@ public class TransactionController {
 	
 	@Autowired
 	TransactionDao transaction_dao;
+	
+	@Autowired
+	RegItemDao regitem_dao;
 	
 	@Autowired
 	HttpServletRequest request;
@@ -36,12 +42,15 @@ public class TransactionController {
 	}
 	
 	@RequestMapping("list.do")
-	public String list(Model model) {
+	public String list(@RequestParam(name = "reg_idx", defaultValue = "0") int reg_idx, Model model) {
 		
-		List<TransactionVo> list = transaction_dao.selectList();
+		List<TransactionVo> list = transaction_dao.selectListTran();
+		
+		List<RegItemVo> list2 = regitem_dao.selectOneReg(reg_idx);
 		
 		//request binding
 		model.addAttribute("list", list);
+		model.addAttribute("list2", list2);
 		
 		return "/transaction/transaction";
 	}

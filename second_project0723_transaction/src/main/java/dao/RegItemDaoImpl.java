@@ -24,5 +24,10 @@ public class RegItemDaoImpl implements RegItemDao {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("regitem.reg_item_list");
 	}
+	@Override
+	public List<RegItemVo> selectOneReg(int reg_idx) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("regitem.reg_item_idx_list", reg_idx);
+	}
 
 }

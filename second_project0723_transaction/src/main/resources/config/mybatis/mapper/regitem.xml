@@ -8,4 +8,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="reg_item_list"  resultType="regitem">
 		select * from reg_item
 	</select>
+	
+	<select id="reg_item_idx_list" parameterType="int" resultType="regitem">
+		select * from reg_item where reg_idx=#{ reg_idx }
+	</select>
 </mapper>

@@ -77,13 +77,36 @@
 				</tr>
 			</c:forEach>
 		</table>
-		거래금액 : <input id="transaction_point" class="form-control"><br><br>
-       	거래 후 잔액 : <input id="after_transaction" class="form-control">
-       	<input type="button" class="btn btn-success" value="거래" onclick="transaction();"><br><br>
-			
-		충전하실 금액 : <input id="charge_point" class="form-control">
-       	<input type="button" class="btn btn-danger" value="충전" onclick="charge();">
+
 	
+	<table class="table">
+			<tr class="info">
+				<th>아이템</th>
+				<th>아이템명</th>
+				<th>아이템가격</th>
+				<th>등록시간</th>
+				<th>구매여부</th>
+			</tr>
+			
+			<c:forEach var="vo" items="${ list2 }">
+				<tr>
+					<td>
+						<div class="item_image">
+								<img src="../resources/images/${ vo.filename }">
+							</div>
+						</td>
+					<td>${ vo.reg_name }</td>
+					<td>${ vo.reg_price }</td>
+					<td>${ vo.reg_date }</td>
+					<td>
+       					거래금액 : <input id="transaction_point" class="form-control" value="${ vo.reg_price }"><br><br>
+				       	<input type="button" class="btn btn-success" value="거래" onclick="transaction();"><br><br>
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
+				충전하실 금액 : <input id="charge_point" class="form-control">
+		       	<input type="button" class="btn btn-danger" value="충전" onclick="charge();">
 </form>
 </div>
 </body>

@@ -16,7 +16,7 @@ public class TransactionDao {
 		this.sqlSession = sqlSession;
 	}
 
-	public List<TransactionVo> selectList() {
+	public List<TransactionVo> selectListTran() {
 
 		return sqlSession.selectList("transaction.transaction_list");
 	}

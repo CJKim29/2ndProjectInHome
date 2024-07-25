@@ -28,9 +28,9 @@
 
 <script type="text/javascript">
 	
-	function buy() {
+	function buy(reg_idx) {
 		
-		location.href="../transaction/list.do?reg_price=${ reg_price }";
+		location.href="../transaction/list.do?reg_idx=" + reg_idx;
 	}
 </script>
 
@@ -60,7 +60,7 @@
 					<td>${ vo.reg_price }</td>
 					<td>${ vo.reg_date }</td>
 					<td>
-       					<input type="button" class="btn btn-success" value="구매" onclick="buy();">
+       					<input type="button" class="btn btn-success" value="구매" onclick="buy('${vo.reg_idx}');">
 					</td>
 				</tr>
 			</c:forEach>
