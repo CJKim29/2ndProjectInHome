@@ -12,6 +12,9 @@
 		<typeAlias type="vo.ItemVo" alias="item"/>
 		<typeAlias type="vo.TransactionVo" alias="transaction"/>
 		<typeAlias type="vo.RegItemVo" alias="regitem" />
+		<typeAlias type="vo.ChatPageVo" alias="chat_page" />
+		<typeAlias type="vo.MemberVo" alias="member"/>
+		<typeAlias type="vo.ChatListVo" alias="chatlist"/>
 	</typeAliases>
 	
 	
@@ -19,5 +22,7 @@
 		<mapper resource="config/mybatis/mapper/item.xml" />
 		<mapper resource="config/mybatis/mapper/transaction.xml" />
 		<mapper resource="config/mybatis/mapper/regitem.xml" />
+		<mapper resource="config/mybatis/mapper/chat_page.xml" />
+		<mapper resource="config/mybatis/mapper/member.xml" />
 	</mappers>
 </configuration>

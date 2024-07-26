@@ -46,7 +46,7 @@
 				<th>아이템명</th>
 				<th>아이템가격</th>
 				<th>등록시간</th>
-				<th>구매여부</th>
+				<th>구매신청</th>
 			</tr>
 			
 			<c:forEach var="vo" items="${ list }">
@@ -60,7 +60,7 @@
 					<td>${ vo.reg_price }</td>
 					<td>${ vo.reg_date }</td>
 					<td>
-       					<input type="button" class="btn btn-success" value="구매" onclick="buy('${vo.reg_idx}');">
+       					<input type="button" class="btn btn-success" value="구매신청" onclick="buy('${vo.reg_idx}');">
 					</td>
 				</tr>
 			</c:forEach>

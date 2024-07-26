@@ -15,4 +15,16 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 	<bean id="regitem_dao" class="dao.RegItemDaoImpl">
 		<property name="sqlSession" ref="sqlSession"/>
 	</bean>
+	
+	<bean id="chat_page_dao" class="dao.ChatPageDaoImpl">
+		<property name="sqlSession" ref="sqlSession"/>
+	</bean>
+	
+	<bean id="member_dao" class="dao.MemberDaoImpl">
+		<property name="sqlSession" ref="sqlSession"/>
+	</bean>
+	
+	<bean id="chatlist_dao" class="dao.ChatListDaoImpl">
+		<property name="sqlSession" ref="sqlSession"/>
+	</bean>
 </beans>
