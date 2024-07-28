@@ -12,4 +12,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="reg_item_idx_list" parameterType="int" resultType="regitem">
 		select * from reg_item where reg_idx=#{ reg_idx }
 	</select>
+	
+	<!-- 직접입력 방식 bidding_point 업데이트 -->
+    <update id="bidding_point">
+        update reg_item 
+        set reg_price = reg_price + #{ bidding_point }
+        <!-- where mem_id = #{ mem_id } -->
+    </update>
+    
+    <!-- 버튼 방식 bidding_point 업데이트 -->
+    <update id="bidding_point_button">
+        update reg_item 
+        set reg_price = reg_price + #{ bidding_point_button }
+        <!-- where mem_id = #{ mem_id } -->
+    </update>
 </mapper>

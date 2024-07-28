@@ -22,4 +22,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         set dec_point = dec_point + #{ transaction_point }
         <!-- where mem_id = #{ mem_id } -->
     </update>
+    
+    
 </mapper>

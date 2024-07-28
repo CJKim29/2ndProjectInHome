@@ -8,4 +8,8 @@ public interface RegItemDao {
     List<RegItemVo> selectList();
 
 	List<RegItemVo> selectOneReg(int reg_idx);
+
+	List<RegItemVo> updateIncBiddingPoint(int bidding_point);
+
+	List<RegItemVo> updateIncBiddingPointButton(int bidding_point_button);
 }

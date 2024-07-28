@@ -41,8 +41,8 @@ public class TransactionController {
 		//System.out.println("--transactionController()--");
 	}
 	
-	@RequestMapping("list.do")
-	public String list(@RequestParam(name = "reg_idx", defaultValue = "0") int reg_idx, Model model) {
+	@RequestMapping("transaction_list.do")
+	public String transaction_list(@RequestParam(name = "reg_idx", defaultValue = "0") int reg_idx, Model model) {
 		
 		List<TransactionVo> list = transaction_dao.selectListTran();
 		
@@ -55,6 +55,20 @@ public class TransactionController {
 		return "/transaction/transaction";
 	}
 	
+	@RequestMapping("auction_list.do")
+	public String auction_list(@RequestParam(name = "reg_idx", defaultValue = "0") int reg_idx, Model model) {
+		
+		List<TransactionVo> list = transaction_dao.selectListTran();
+		
+		List<RegItemVo> list2 = regitem_dao.selectOneReg(reg_idx);
+		
+		//request binding
+		model.addAttribute("list", list);
+		model.addAttribute("list2", list2);
+		
+		return "/transaction/auction";
+	}
+	
 	@RequestMapping("transaction_charge.do")
 	public String charge(int charge_point, Model model) {
 		
@@ -63,7 +77,18 @@ public class TransactionController {
 		//request binding
 		model.addAttribute("list", list);
 		
-		return "redirect:list.do";
+		return "redirect:transaction_list.do";
+	}
+	
+	@RequestMapping("transaction_charge_auction.do")
+	public String transaction_charge_auction(int charge_point, Model model) {
+		
+		List<TransactionVo> list = transaction_dao.updateIncPoint(charge_point);
+		
+		//request binding
+		model.addAttribute("list", list);
+		
+		return "redirect:auction_list.do";
 	}
 	
 	@RequestMapping("transaction.do")
@@ -74,7 +99,39 @@ public class TransactionController {
 		//request binding
 		model.addAttribute("list", list);
 		
-		return "redirect:list.do";
+		return "redirect:transaction_list.do";
 	}
 	
+	@RequestMapping("transaction_auction.do")
+	public String transaction_auction(int transaction_point, Model model) {
+		
+		List<TransactionVo> list = transaction_dao.transactionAuction(transaction_point);
+		
+		//request binding
+		model.addAttribute("list", list);
+		
+		return "redirect:auction_list.do";
+	}
+	
+	@RequestMapping("bidding_auction.do")
+	public String bidding_auction(int bidding_point, Model model) {
+		
+		List<RegItemVo> list = regitem_dao.updateIncBiddingPoint(bidding_point);
+		
+		//request binding
+		model.addAttribute("list", list);
+		
+		return "redirect:auction_list.do";
+	}
+	
+	@RequestMapping("bidding_auction_button.do")
+	public String bidding_auction_button(int bidding_point_button, Model model) {
+		
+		List<RegItemVo> list = regitem_dao.updateIncBiddingPointButton(bidding_point_button);
+		
+		//request binding
+		model.addAttribute("list", list);
+		
+		return "redirect:auction_list.do";
+	}
 }

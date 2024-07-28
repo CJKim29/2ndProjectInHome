@@ -30,7 +30,12 @@
 	
 	function buy(reg_idx) {
 		
-		location.href="../transaction/list.do?reg_idx=" + reg_idx;
+		location.href="../transaction/transaction_list.do?reg_idx=" + reg_idx;
+	}
+	
+	function auction(reg_idx) {
+		
+		location.href="../transaction/auction_list.do?reg_idx=" + reg_idx;
 	}
 </script>
 
@@ -60,7 +65,9 @@
 					<td>${ vo.reg_price }</td>
 					<td>${ vo.reg_date }</td>
 					<td>
-       					<input type="button" class="btn btn-success" value="구매신청" onclick="buy('${vo.reg_idx}');">
+						<input type="button" class="btn btn-warning" value="구매신청" onclick="buy('${vo.reg_idx}');"><br><br>
+       					<input type="button" class="btn btn-danger" value="경매참가" onclick="auction('${vo.reg_idx}');">
+       					
 					</td>
 				</tr>
 			</c:forEach>

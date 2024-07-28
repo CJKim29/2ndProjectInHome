@@ -31,5 +31,8 @@ public class TransactionDao {
 		return sqlSession.selectList("transaction.transaction_point", transaction_point);
 	}
 
-	
+	public List<TransactionVo> transactionAuction(int transaction_point) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("transaction.transaction_point", transaction_point);
+	}
 }
