@@ -1,6 +1,8 @@
 package controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import dao.RegItemDao;
 import dao.TransactionDao;
@@ -134,4 +137,16 @@ public class TransactionController {
 		
 		return "redirect:auction_list.do";
 	}
+	
+	@RequestMapping("get_latest_prices.do")
+	@ResponseBody
+	public Map<String, Object> getLatestPrices() {
+	    // 여기에서 DB에서 최신 가격을 조회하는 로직을 구현하세요.
+	    // 예시로 모든 아이템의 최신 가격을 반환합니다.
+	    Map<String, Object> response = new HashMap<>();
+	    int latestPrice = regitem_dao.getLatestPrice(); // 모든 아이템의 최신 가격을 조회하는 DAO 메소드
+	    response.put("latest_price", latestPrice);
+	    return response;
+	}
+
 }

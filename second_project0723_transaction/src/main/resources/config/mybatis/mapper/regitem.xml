@@ -26,4 +26,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         set reg_price = reg_price + #{ bidding_point_button }
         <!-- where mem_id = #{ mem_id } -->
     </update>
+    
+    <!-- 경매시 화면 새로고침 -->
+    <select id="getLatestPrice" resultType="int">
+    	select max(reg_price) from reg_item 
+    	<!-- where reg_idx = #{ reg_idx } -->
+	</select>
 </mapper>

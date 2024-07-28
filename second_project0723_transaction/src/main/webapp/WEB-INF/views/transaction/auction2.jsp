@@ -26,7 +26,7 @@
 		const transaction_point = $("#transaction_point").val();
 		
 		$.ajax({
-			url		:	"transaction.do",
+			url		:	"transaction_auction.do",
 			data	:	{"transaction_point":transaction_point},
 			success	:	function(res_data){
 				
@@ -55,12 +55,12 @@
 		});
 	}//end:bidding_auction()
 	
-	function bidding_auction_button(buttonId) {
+	function bidding_auction_button(buttonValue) {
 		
-	    const bidding_point_button = buttonId;
-	
-	    $.ajax({
-	    	url		:	"bidding_auction_button.do",
+		const bidding_point_button = buttonValue;
+		
+		$.ajax({
+			url		:	"bidding_auction_button.do",
 			data	:	{"bidding_point_button":bidding_point_button},
 			success	:	function(res_data){
 				
@@ -69,9 +69,8 @@
 			error	:	function(err){
 				alert(err.responseText)
 			}
-	        }
-	    });
-	}//end:bidding_aution_button()
+		});
+	}//end:bidding_auction()
 	
 	function charge_auction() {
 		
@@ -91,7 +90,45 @@
 	}//end:charge()
 	
 </script>
-  	
+
+<script type="text/javascript">
+	function getParameterByName(name) {
+	    const url = window.location.href;
+	    const nameEscaped = name.replace(/[\[\]]/g, '\\$&');
+	    const regex = new RegExp('[?&]' + nameEscaped + '(=([^&#]*)|&|#|$)');
+	    const results = regex.exec(url);
+	    if (!results) return null;
+	    if (!results[2]) return '';
+	    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+	}
+
+	function refreshAuctionPoint(reg_idx) {
+	    $.ajax({
+	        url: "get_latest_price.do",
+	        data: {"reg_idx": reg_idx},
+	        success: function(res_data) {
+	            $("#auction_point").val(res_data.latest_price);
+	        },
+	        error: function(err) {
+	            console.error("Error fetching latest price:", err.responseText);
+	        }
+	    });
+	}
+
+	$(document).ready(function() {
+	    const reg_idx = getParameterByName('reg_idx');
+	    if (reg_idx) {
+	        // 1초마다 refreshAuctionPoint 함수 호출
+	        setInterval(function() {
+	            refreshAuctionPoint(reg_idx);
+	        }, 1000);
+	    } else {
+	        console.error("reg_idx parameter not found in URL");
+	    }
+	});
+</script>
+
+
 
 </head>
 <body>
@@ -135,8 +172,8 @@
             <td>${ vo.reg_name }</td>
             <td>${ vo.reg_price }</td>
             <td>
-            	즉시 판매가<input id="transaction_point" class="form-control" value="${ vo.reg_price }"><br><br>
-                	<input type="button" class="btn btn-success" value="즉시구매" onclick="transaction_auction();">
+            	즉시 판매가 <input id="transaction_point" class="form-control" value="${ vo.reg_price }"><br><br>
+                	<input type="button" class="btn btn-success" value="즉시구매" onclick="transaction();"><br><br>
             </td>
             <td>${ vo.reg_date }</td>
             <td>${ vo.reg_date }</td>

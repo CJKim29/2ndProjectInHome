@@ -39,5 +39,10 @@ public class RegItemDaoImpl implements RegItemDao {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("regitem.bidding_point_button", bidding_point_button);
 	}
+	@Override
+	public int getLatestPrice() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("regitem.getLatestPrice");
+	}
 
 }

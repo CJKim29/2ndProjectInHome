@@ -12,4 +12,6 @@ public interface RegItemDao {
 	List<RegItemVo> updateIncBiddingPoint(int bidding_point);
 
 	List<RegItemVo> updateIncBiddingPointButton(int bidding_point_button);
+
+	int getLatestPrice();
 }

@@ -90,7 +90,25 @@
 	}//end:charge()
 	
 </script>
-  	
+
+<script type="text/javascript">
+	
+	function refreshAuctionPoint() {
+	    $.ajax({
+	        url: "get_latest_prices.do",
+	        success: function(res_data) {
+	            $("#auction_point").val(res_data.latest_price);
+	        },
+	        error: function(err) {
+	            console.error("Error fetching latest price:", err.responseText);
+	        }
+	    });
+	}
+	
+	// 1초마다 refreshAuctionPoint 함수 호출
+	setInterval(refreshAuctionPoint, 1000);
+	
+</script>
 
 </head>
 <body>
