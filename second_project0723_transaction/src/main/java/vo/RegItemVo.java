@@ -6,6 +6,7 @@ public class RegItemVo {
 	String	filename;
 	String	reg_name;
 	int		reg_price;
+	int		auction_price;
 	String	reg_date;
 	
 	public int getReg_idx() {
@@ -31,6 +32,12 @@ public class RegItemVo {
 	}
 	public void setReg_price(int reg_price) {
 		this.reg_price = reg_price;
+	}
+	public int getAuction_price() {
+		return auction_price;
+	}
+	public void setAuction_price(int auction_price) {
+		this.auction_price = auction_price;
 	}
 	public String getReg_date() {
 		return reg_date;

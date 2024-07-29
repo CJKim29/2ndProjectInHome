@@ -125,8 +125,10 @@
 				<th>아이피</th>
 				<th>가입일자</th>
 				<th>회원등급</th>
+				<th>포인트</th>
 				<th>편집</th>
 				<th>채팅</th>
+				<th>거래</th>
 			</tr>
 
 		<!-- 데이터 있을 경우 -->
@@ -141,6 +143,7 @@
 					<td>${ vo.mem_ip }</td>
 					<td>${ fn:substring(vo.mem_regdate,0,10) }</td>
 					<td>${ vo.mem_grade }</td>
+					<td>${ vo.mem_point }</td>
 					<td> <!-- 수정 삭제 버튼 권한		관리자					글 작성자 본인	  -->
 						<c:if test="${(user.mem_grade eq '관리자') or (user.mem_idx eq vo.mem_idx)}">
 							<input class="btn btn-success" type="button" value="수정" 
@@ -152,6 +155,10 @@
 					<td>
 						<input class="btn btn-primary" type="button" value="채팅"
 						onclick="chatting('${vo.mem_idx}','${vo.mem_name}');">
+					</td>
+					<td>
+						<input class="btn btn-success" type="button" value="거래" 
+						onclick="location.href='../regitem/list.do'">
 					</td>
 				</tr>
 			</c:forEach>

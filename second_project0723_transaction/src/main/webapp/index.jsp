@@ -8,7 +8,7 @@
 
 <script type="text/javascript">
 	
-	location.href="regitem/list.do";
+	location.href="member/list.do";
 	
 </script>
 

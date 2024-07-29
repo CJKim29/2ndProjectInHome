@@ -29,7 +29,7 @@
 <script type="text/javascript">
 	
 	function buy(reg_idx) {
-		
+
 		location.href="../transaction/transaction_list.do?reg_idx=" + reg_idx;
 	}
 	
@@ -44,12 +44,14 @@
 
 <div id="box">
 <form class="form-inline">
-	
+	<input type="hidden" name="mem_idx" value="<%= session.getAttribute("mem_idx") %>">
+
 	<table class="table">
 			<tr class="info">
 				<th>아이템</th>
 				<th>아이템명</th>
 				<th>아이템가격</th>
+				<th>경매가격</th>
 				<th>등록시간</th>
 				<th>구매신청</th>
 			</tr>
@@ -63,6 +65,7 @@
 						</td>
 					<td>${ vo.reg_name }</td>
 					<td>${ vo.reg_price }</td>
+					<td>${ vo.auction_price }</td>
 					<td>${ vo.reg_date }</td>
 					<td>
 						<input type="button" class="btn btn-warning" value="구매신청" onclick="buy('${vo.reg_idx}');"><br><br>

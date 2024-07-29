@@ -1,6 +1,8 @@
 package dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +45,11 @@ public class RegItemDaoImpl implements RegItemDao {
 	public int getLatestPrice() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("regitem.getLatestPrice");
+	}
+	@Override
+	public RegItemVo selectOneRegItem(int reg_idx) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("regitem.selectOneRegItem", reg_idx);
 	}
 
 }

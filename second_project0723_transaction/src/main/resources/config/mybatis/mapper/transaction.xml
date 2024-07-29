@@ -10,17 +10,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	 <!-- inc_point 업데이트 -->
-    <update id="updateInc_point">
-        update transaction 
-        set inc_point = inc_point + #{ charge_point }
-        <!-- where mem_id = #{ mem_id } -->
+    <update id="updateInc_point" parameterType="map">
+        update member 
+        set mem_point = mem_point + #{ charge_point }
+        where mem_idx = #{ mem_idx }
     </update>
     
     <!-- 거래 후 inc_point 업데이트 -->
-    <update id="transaction_point">
-        update transaction 
-        set dec_point = dec_point + #{ transaction_point }
-        <!-- where mem_id = #{ mem_id } -->
+    <update id="transaction_point" parameterType="map">
+        update member 
+        set mem_point = mem_point - #{ transaction_point }
+        where mem_idx = #{ mem_idx }
     </update>
     
     

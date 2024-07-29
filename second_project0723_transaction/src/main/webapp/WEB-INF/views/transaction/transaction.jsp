@@ -22,37 +22,47 @@
 <script type="text/javascript">
 	
 	function transaction() {
-		
-		const transaction_point = $("#transaction_point").val();
-		
-		$.ajax({
-			url		:	"transaction.do",
-			data	:	{"transaction_point":transaction_point},
-			success	:	function(res_data){
-				
-				location.reload(); // 페이지를 새로고침
-			},
-			error	:	function(err){
-				alert(err.responseText)
-			}
-		});
-	}//end:transaction()
+	    const transaction_point = $("#transaction_point").val();
+	    const mem_idx = ${user.mem_idx};
+	
+	    $.ajax({
+	        url: "transaction.do",
+	        type: "POST",
+	        data: {
+	            "transaction_point": transaction_point,
+	            "mem_idx": mem_idx
+	        },
+	        dataType: "json",
+	        success: function(response) {
+	            $("#user_name").text(response.mem_name);
+	            $("#user_point").text(response.mem_point);
+	        },
+	        error: function(err) {
+	            alert("에러: " + err.responseText);
+	        }
+	    });
+}//end:transaction()
 	
 	function charge() {
-		
-		const charge_point = $("#charge_point").val();
-		
-		$.ajax({
-			url		:	"transaction_charge.do",
-			data	:	{"charge_point":charge_point},
-			success	:	function(res_data){
-				
-				location.reload(); // 페이지를 새로고침
-			},
-			error	:	function(err){
-				alert(err.responseText)
-			}
-		});
+	    const charge_point = $("#charge_point").val();
+	    const mem_idx = ${user.mem_idx}; // 서버에서 제공한 변수 사용
+	
+	    $.ajax({
+	        url: "transaction_charge.do",
+	        type: "POST",
+	        data: {
+	            "charge_point": charge_point,
+	            "mem_idx": mem_idx
+	        },
+	        dataType: "json",
+	        success: function(response) {
+	            $("#user_name").text(response.mem_name);
+	            $("#user_point").text(response.mem_point);
+	        },
+	        error: function(err) {
+	            alert("에러: " + err.responseText);
+	        }
+	    });
 	}//end:charge()
 	
 </script>
@@ -70,12 +80,10 @@
 				<th>계좌잔액</th>
 			</tr>
 			
-			<c:forEach var="vo" items="${ list }">
 				<tr>
-					<td>${ vo.mem_id }</td>
-					<td>${ vo.inc_point - vo.dec_point }</td>
-				</tr>
-			</c:forEach>
+			        <td id="user_name">${ user.mem_name }</td>
+			        <td id="user_point">${ user.mem_point }</td>
+			    </tr>
 		</table>
 
 	
@@ -88,7 +96,7 @@
 				<th>구매여부</th>
 			</tr>
 			
-			<c:forEach var="vo" items="${ list2 }">
+			<c:forEach var="vo" items="${ list }">
 				<tr>
 					<td>
 						<div class="item_image">

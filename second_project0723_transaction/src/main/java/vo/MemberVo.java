@@ -16,6 +16,8 @@ public class MemberVo {
 	
 	String  mem_filename;
 	
+	int		mem_point;
+	
 	// 기본생성자 만들기
 	public MemberVo() {
 		// TODO Auto-generated constructor stub
@@ -128,5 +130,12 @@ public class MemberVo {
 
 	public void setMem_filename(String mem_filename) {
 		this.mem_filename = mem_filename;
+	}
+
+	public int getMem_point() {
+		return mem_point;
+	}
+	public void setMem_point(int mem_point) {
+		this.mem_point = mem_point;
 	}
 }
