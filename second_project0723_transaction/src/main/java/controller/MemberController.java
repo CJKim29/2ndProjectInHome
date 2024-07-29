@@ -125,7 +125,7 @@ public class MemberController {
 		// id 틀렸을 경우
 		if(user==null) {
 			// RedirectAttributes => redirect 시 parameter로 이용된다.
-			ra.addFlashAttribute("reason", "fail_id");	// 아이디 틀렸다는 정보를 DS에 넘겨줌
+			ra.addAttribute("reason", "fail_id");	// 아이디 틀렸다는 정보를 DS에 넘겨줌
 			return "redirect:login_form.do";		// 로그인 창으로 돌아가기
 		}
 		
